@@ -39,7 +39,7 @@ export default {
     return bool;
   },
   tilebg(tile) {
-    const imgPath = "../img/worlds/streets/sprite-map.png";
+    const imgPath = "/images/sprite-map.png";
     const size = 64;
     const x = size * tile.position.x;
     const y = size * tile.position.y;

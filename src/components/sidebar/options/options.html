@@ -1,5 +1,40 @@
-
 <section class="options">
-  <h1>options Component</h1>
+  <div class="options__option slide-in-right">
+    <div class="options__option__map-creator">
+      <p>Create new map</p>
+      <fieldset>
+        <label for="width">Width</label>
+        <input
+          type="number"
+          id="width"
+          min="10"
+          max="500"
+          v-model="defaultWidth"
+        />
+      </fieldset>
+      <fieldset>
+        <label for="height">Height</label>
+        <input
+          type="number"
+          id="height"
+          min="10"
+          max="500"
+          v-model="defaultHeight"
+        />
+      </fieldset>
+      <button class="submit block-icon-check" @click="createMap">Create</button>
+    </div>
+  </div>
+  <div class="options__option slide-in-right">
+    <p>Publish</p>
+    <fieldset>
+      <label for="file-name">File name</label>
+      <input type="text" id="file-name" v-model="fileName" />
+    </fieldset>
+    <fieldset>
+      <label for="path">Path</label>
+      <input type="text" id="path" v-model="publishPath" />
+    </fieldset>
+    <button class="submit block-icon-check" @click="publish">Publish</button>
+  </div>
 </section>
-

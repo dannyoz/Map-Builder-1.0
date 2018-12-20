@@ -1,19 +1,14 @@
+import store from "@/store";
+
 export default {
-  name: 'main-panel-controls',
-  components: {},
-  props: [],
-  data () {
+  data() {
     return {
-
-    }
-  },
-  computed: {
-
-  },
-  mounted () {
-
+      zoom: 100
+    };
   },
   methods: {
-
+    handleZoom() {
+      store.commit("setZoom", this.zoom);
+    }
   }
-}
+};

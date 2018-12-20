@@ -2,7 +2,7 @@
 @import "./shared/variables";
 
 @include normalise;
-@include blockIcons;
+@include blockIcons("/icons/");
 @include googleFont("roboto", body button input);
 @include slideIn("right", 40, $bounce, 0.6s, 0);
 @include slideIn("up");

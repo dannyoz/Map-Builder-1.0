@@ -1,5 +1,27 @@
-
 <section class="tiles">
-  <h1>tiles Component</h1>
+  <div class="tiles">
+    <div
+      class="tile"
+      :class="tileClass(i)"
+      v-for="(tile, i) in tiles"
+      track-by="i"
+      draggable="true"
+      @drop="drop($event)"
+      @dragover="allowDrop($event)"
+      @dragenter="targetDropspace(i)"
+      @dragStart="dragTile(i)"
+    >
+      <div
+        v-if="!hidden && tile.position"
+        class="tile__icon"
+        @click="selectTile(i)"
+        :class="{'tile--active': currentIndex == i}"
+        :style="tilebg(tile)"
+      ></div>
+      <span v-if="hidden && tile.position" class="centre" @click="selectTile(i)"
+        >{{ tile.position.x }} - {{ tile.position.y }}</span
+      >
+      <span v-if="tile.targetTile" class="centre">derp</span>
+    </div>
+  </div>
 </section>
-

@@ -1,3 +1,36 @@
-.options {
+@import "../../../../node_modules/spice-sass/src/spice";
+@import "../../../shared/variables.scss";
 
+.options {
+  padding: 20px;
+  @include formLined(3px, 5px 0 5px 10px, 14);
+  @include formsTheme(#ddd, #22252a, $primary);
+  @include flatButton("info", #1b8898);
+  @include flatButton("warning", #d7861e);
+  @include flatButton("danger", #ac2828);
+  @include flatButton("submit", #54a03a);
+
+  input[type="number"] {
+    max-width: 3.5rem;
+  }
+
+  fieldset {
+    @include clearFix;
+
+    label {
+      float: left;
+      min-width: 4rem;
+    }
+  }
+
+  &__option {
+    padding: 20px 0;
+    border-bottom: 1px solid #0e0f10;
+    @include clearFix;
+
+    &__map-creator {
+      float: left;
+      width: 8rem;
+    }
+  }
 }

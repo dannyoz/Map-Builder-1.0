@@ -1,19 +1,7 @@
+import mapBuilder from "@/components/main-panel/map";
+
 export default {
-  name: 'main-panel',
-  components: {},
-  props: [],
-  data () {
-    return {
-
-    }
-  },
-  computed: {
-
-  },
-  mounted () {
-
-  },
-  methods: {
-
+  components: {
+    mapBuilder
   }
-}
+};

@@ -1,5 +1,27 @@
-
 <section class="map">
-  <h1>map Component</h1>
+  <div class="grid" :style="calculateGridSize()">
+    <div class="grid__row" v-for="(row, i) in grid">
+      <div
+        @click="drawTile(cell)"
+        @contextmenu="deleteTile($event, cell)"
+        class="grid__cell"
+        v-for="(cell, j) in row"
+        :class="{'grid__cell--unassigned': !cell.tiles.length, 'grid__cell--disabled' : !canDraw(cell.tiles)}"
+      >
+        <div v-if="cell.tiles.length && !hidden">
+          <div
+            class="grid__cell__icon"
+            v-for="tile in cell.tiles"
+            track-by="j"
+            :style="tilebg(tile)"
+          ></div>
+        </div>
+        <span v-if="cell.tiles.length && hidden" class="centre">
+          <span v-for="(tile,k) in cell.tiles" track-by="k"
+            >{{ tile.position.x }}{{ tile.position.y }}</span
+          >
+        </span>
+      </div>
+    </div>
+  </div>
 </section>
-

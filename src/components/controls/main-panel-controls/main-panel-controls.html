@@ -1,5 +1,14 @@
-
 <section class="main-panel-controls">
-  <h1>main-panel-controls Component</h1>
+  <div class="main-panel-controls">
+    <div class="main-panel-controls__zoom">
+      <i class="block-icon-magnifying-glass"></i>
+      <input
+        type="range"
+        min="10"
+        max="100"
+        v-model="zoom"
+        @input="handleZoom"
+      />
+    </div>
+  </div>
 </section>
-
