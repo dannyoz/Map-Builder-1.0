@@ -1,0 +1,13 @@
+<section class="side-bar-controls">
+  <div class="side-bar-controls">
+    <nav class="button-group tab">
+      <button
+        @click="switchTab(index)"
+        :class="{'active': current == index}"
+        v-for="(tab, index) in tabs"
+      >
+        <i :class="tabClass(tab)"></i> {{ tab.title }}
+      </button>
+    </nav>
+  </div>
+</section>

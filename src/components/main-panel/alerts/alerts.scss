@@ -1,0 +1,26 @@
+@import ".././../../../node_modules/spice-sass/src/spice";
+@import "../../../shared/variables";
+
+.alert {
+  top: 3rem;
+  @include centre(x);
+  @include message("info", #98dae4);
+  @include message("success", #98e4a6);
+  @include message("warning", #ffc558);
+  @include message("danger", #ff9191);
+
+  .message {
+    @include clearFix;
+  }
+
+  p {
+    float: left;
+    margin-bottom: 0;
+  }
+
+  &__close {
+    margin-left: 1rem;
+    float: right;
+    cursor: pointer;
+  }
+}

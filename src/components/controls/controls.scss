@@ -1,0 +1,25 @@
+@import "../../../node_modules/spice-sass/src/spice";
+@import "../../shared/variables.scss";
+
+.controls {
+  height: $controls-height;
+  @include fitContainer(0 0 auto 0);
+
+  .side-bar-controls {
+    @include sideBar($idebarWidth, "left", darken($sidebarCol, 5%));
+  }
+
+  .main-panel-controls {
+    font-size: 16px;
+    color: contrast($sidebarCol, 60%);
+    line-height: $controls-height;
+    @include sideBarAppend($idebarWidth, "left", darken($sidebarCol, 5%));
+
+    &__zoom {
+      float: right;
+      padding: 0 20px;
+    }
+  }
+
+  @include flatButtonGroup("tab", darken($sidebarCol, 5%), 16px, 0);
+}

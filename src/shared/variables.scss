@@ -1,0 +1,17 @@
+// Spice Vendor Prefix overides
+// --------------------
+$defaultVendors: "";
+$animationVendors: "";
+$transformVendors: "";
+
+// colours
+$primary: #a2aebb;
+$secondary: $col-amethyst;
+$sidebarCol: #2d3238;
+$main-panel-col: #32363c;
+$grid-line-col: contrast($main-panel-col, 5%);
+
+// dimensions
+$idebarWidth: 360px;
+$tileSize: 64px;
+$controls-height: 40px;
