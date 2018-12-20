@@ -12,6 +12,11 @@ export default {
       fileName: "test"
     };
   },
+  mounted() {
+    apiService.request("env").end((err, data) => {
+      console.log(data);
+    });
+  },
   methods: {
     createMap() {
       utils.clearGrid();
@@ -22,7 +27,7 @@ export default {
     },
     publish() {
       apiService
-        .post("/api/publish", {
+        .post("publish", {
           path: this.publishPath,
           fileName: this.fileName,
           map: utils.loadGrid(1, 1)
