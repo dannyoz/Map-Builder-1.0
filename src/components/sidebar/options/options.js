@@ -8,14 +8,12 @@ export default {
     return {
       defaultWidth: String(store.state.mapSize.x),
       defaultHeight: String(store.state.mapSize.y),
-      publishPath: "/Users/",
+      publishPath: "",
       fileName: "test"
     };
   },
   mounted() {
-    apiService.request("env").end((err, data) => {
-      console.log(data);
-    });
+    this.publishPath = utils.loadPublishPath("/Users/dan");
   },
   methods: {
     createMap() {
@@ -26,6 +24,7 @@ export default {
       });
     },
     publish() {
+      utils.savePublishPath(this.publishPath);
       apiService
         .post("publish", {
           path: this.publishPath,

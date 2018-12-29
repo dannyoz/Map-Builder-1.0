@@ -9,9 +9,12 @@ js.use(bodyParser({ limit: "50mb" }));
 js.post("/api/publish", (req, res) => {
   var path = req.body.path,
     fileName = req.body.fileName,
-    map = JSON.stringify(req.body.map);
+    data = JSON.stringify(req.body.map);
 
-  fs.writeFile(path + "/" + fileName + ".json", map, function(err) {
+  const filePath = `${path}/${fileName}.json`;
+  let writeStream = fs.createWriteStream(filePath);
+
+  writeStream.write(data, (err) => {
     if (err) {
       res.status(404).send(err);
     } else {
@@ -25,5 +28,5 @@ js.get("/api/env", function(req, res) {
 });
 
 js.listen(js.get("port"), function() {
-  console.log("Jimmy app is running on port", js.get("port"));
+  console.log("Map builder app is running on port", js.get("port"));
 });
