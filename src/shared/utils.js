@@ -80,5 +80,15 @@ export default {
   saveSideBar(sideBar) {
     const data = JSON.stringify(sideBar);
     localStorage.setItem("sidebar", data);
+  },
+  loadPublishPath(defaultPath) {
+    const savedTiles = localStorage.getItem("publishPath");
+    const saveData = JSON.parse(savedTiles);
+    const path = (saveData) ? saveData : defaultPath;
+    return path;
+  },
+  savePublishPath(path) {
+    const data = JSON.stringify(path);
+    localStorage.setItem("publishPath", data);
   }
 };

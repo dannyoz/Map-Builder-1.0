@@ -7,7 +7,7 @@
   @include message("info", #98dae4);
   @include message("success", #98e4a6);
   @include message("warning", #ffc558);
-  @include message("danger", #ff9191);
+  @include message("error", #ff9191);
 
   .message {
     @include clearFix;
