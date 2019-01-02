@@ -7,8 +7,8 @@ export default {
     }
   },
   watch: {
-    alert() {
-      if (!alert.notimer) {
+    alert(alert) {
+      if (alert && !alert.notimer) {
         this.timeout();
       }
     }
