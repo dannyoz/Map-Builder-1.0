@@ -1,5 +1,5 @@
 import store from "@/store";
-import utils from "@/shared/utils";
+import { isHidden, loadGrid, saveGrid, tilebg } from "@/shared/utils";
 
 export default {
   data() {
@@ -29,7 +29,7 @@ export default {
       return store.state.mapSize;
     },
     hidden() {
-      return utils.isHidden();
+      return isHidden();
     },
     zoom() {
       return store.state.zoom;
@@ -44,14 +44,14 @@ export default {
 
   methods: {
     loadGrid() {
-      this.grid = utils.loadGrid(this.mapSize.x, this.mapSize.y);
+      this.grid = loadGrid(this.mapSize.x, this.mapSize.y);
     },
     drawTile(cell) {
       if (this.canDraw(cell.tiles) && this.currentTile) {
         const y = cell.gridPosition.y;
         const x = cell.gridPosition.x;
         this.grid[y][x].tiles.push(this.currentTile);
-        utils.saveGrid(this.grid);
+        saveGrid(this.grid);
       }
     },
     deleteTile(e, cell) {
@@ -60,11 +60,11 @@ export default {
         const y = cell.gridPosition.y;
         const x = cell.gridPosition.x;
         this.grid[y][x].tiles.splice(-1, 1);
-        utils.saveGrid(this.grid);
+        saveGrid(this.grid);
       }
     },
     tilebg(tile) {
-      return utils.tilebg(tile);
+      return tilebg(tile);
     },
     calculateGridSize() {
       const value = this.zoom / 100;

@@ -1,5 +1,5 @@
 import store from "@/store";
-import utils from "@/shared/utils";
+import { loadSideBar, tilebg, saveSideBar } from "@/shared/utils";
 
 export default {
   data() {
@@ -25,7 +25,7 @@ export default {
       return store.state.sprite.width;
     },
     spriteMap() {
-      return utils.loadSideBar(this.spriteWidth, this.spriteHeight);
+      return loadSideBar(this.spriteWidth, this.spriteHeight);
     }
   },
   mounted() {
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     tilebg(tile) {
-      return utils.tilebg(tile);
+      return tilebg(tile);
     },
     selectTile(index) {
       const tile = this.tiles[index];
@@ -60,7 +60,7 @@ export default {
     allowDrop(e) {
       e.preventDefault();
     },
-    drop(e) {
+    drop() {
       const remove =
         this.targetIndex < this.dragIndex ? this.dragIndex + 1 : this.dragIndex;
       const insert =
@@ -72,7 +72,7 @@ export default {
       this.targetIndex = null;
       this.dragIndex = null;
 
-      utils.saveSideBar({
+      saveSideBar({
         tiles: this.tiles,
         grid: this.spriteMap.grid
       });

@@ -1,5 +1,10 @@
 import store from "@/store";
-import utils from "@/shared/utils";
+import {
+  loadPublishPath,
+  clearGrid,
+  savePublishPath,
+  loadGrid
+} from "@/shared/utils";
 import ApiService from "@/shared/api-service";
 const apiService = new ApiService();
 
@@ -13,25 +18,25 @@ export default {
     };
   },
   mounted() {
-    this.publishPath = utils.loadPublishPath("/Users/dan");
+    this.publishPath = loadPublishPath("/Users/dan");
   },
   methods: {
     createMap() {
-      utils.clearGrid();
+      clearGrid();
       store.commit("setMapSize", {
         x: Number(this.defaultWidth),
         y: Number(this.defaultHeight)
       });
     },
     publish() {
-      utils.savePublishPath(this.publishPath);
+      savePublishPath(this.publishPath);
       apiService
         .post("publish", {
           path: this.publishPath,
           fileName: this.fileName,
-          map: utils.loadGrid(1, 1)
+          map: loadGrid(1, 1)
         })
-        .end((err, data) => {
+        .end(err => {
           if (err) {
             store.commit("setAlert", {
               type: "error",
