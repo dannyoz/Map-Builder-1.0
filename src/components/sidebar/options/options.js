@@ -38,9 +38,10 @@ export default {
         })
         .end(err => {
           if (err) {
+            delete err.response.req;
             store.commit("setAlert", {
               type: "error",
-              message: err,
+              message: err.response.statusText,
               notimer: true
             });
           } else {
